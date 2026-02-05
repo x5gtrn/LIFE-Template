@@ -12,7 +12,7 @@ DAILY_OUT="docs/til-daily-digest.md"
 
 mkdir -p docs docs/til-weekly
 
-TODAY_JST="$(TZ=Asia/Tokyo date +%F)"
+TODAY_JST="$(TZ=Asia/Tokyo date -d 'yesterday' +%F)"
 NOW_JST="$(TZ=Asia/Tokyo date '+%F %H:%M JST')"
 
 ISO_WEEK="$(TZ=Asia/Tokyo date +%G-W%V)"
