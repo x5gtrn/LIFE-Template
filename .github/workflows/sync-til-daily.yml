@@ -1,0 +1,55 @@
+name: Sync TIL daily
+
+on:
+  schedule:
+    # 04:00 JST = 19:00 UTC (previous day)
+    - cron: "0 19 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-til-daily
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout LIFE repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Capture base SHA
+        id: base
+        run: echo "BASE_SHA=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Sync subtree (TIL)
+        run: |
+          ./scripts/sync-til.sh
+
+      - name: Rebuild TIL index
+        run: |
+          ./scripts/build-til-index.sh
+
+      - name: Build daily/weekly digests (high accuracy)
+        run: |
+          ./scripts/build-til-digests.sh "${{ steps.base.outputs.BASE_SHA }}"
+
+      - name: Commit & push only if changed
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git add vendor/til docs/til-index.md docs/til-daily-digest.md docs/til-weekly
+            git commit -m "chore: sync TIL + rebuild index/digests (daily)"
+            git push
+            echo "✅ pushed changes"
+          else
+            echo "✅ no changes"
+          fi

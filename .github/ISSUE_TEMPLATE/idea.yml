@@ -1,0 +1,38 @@
+name: Idea
+description: Capture an idea without forcing it into an action immediately
+title: "[IDEA] "
+labels: ["type:idea"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [career, learning, health, finance, music, life, work]
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+      placeholder: e.g., "Automate weekly TIL digest with GitHub Actions"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why interesting?
+    validations:
+      required: false
+  - type: dropdown
+    id: horizon
+    attributes:
+      label: Horizon
+      options: [someday, next-month, next-week, now]
+    validations:
+      required: true
+  - type: textarea
+    id: first_step
+    attributes:
+      label: First step (optional)
+    validations:
+      required: false
