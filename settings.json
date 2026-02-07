@@ -1,0 +1,12 @@
+{
+  "project_name": "LIFE-Template",
+  "version": "1.0.0",
+  "enabled_skills": [
+    "agent-memory",
+    "grok-search",
+    "neta-trend-daily",
+    "url-digest",
+    "x-post-detail",
+    "x-weekly"
+  ]
+}

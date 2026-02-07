@@ -1,6 +1,8 @@
-# LIFE Template (Private Life OS + Public TIL Sync)
+# Private Life OS (Claude Code + LIFE Repo)
 
-This repository is a [**template**](https://github.com/x5gtrn/life-template) for building a “Life OS” on GitHub:
+Private Life OS is designed to handle the content of your **LIFE repository** interactively using [**Claude Code**](https://claude.ai/code). It provides a structured environment for managing your personal life while maintaining a clear boundary between private context and public output.
+
+This repository is a [**template**](https://github.com/x5gtrn/life-template) for building your Life OS on GitHub:
 
 - **LIFE repo (this repo)** is meant to be **private** and contains your high-context personal operating system:
   - tasks, goals, projects, journals, logs, reviews
@@ -36,6 +38,10 @@ A GitHub Actions workflow runs **every day at 04:00 JST** and:
   - `docs/til-weekly/YYYY-MM-DD-to-YYYY-MM-DD.md` (Weekly summary from Monday 04:00 JST, rebuilt daily)
 - commits and pushes changes back to your LIFE repo **only if there are changes**
 
+### 4) Claude Code Integration
+
+This repository is optimized for use with **Claude Code**. The `.claude/` directory and `CLAUDE.md` provide context and skills (like `agent-memory`, `url-digest`, etc.) that allow Claude to assist you in managing your life, tracking tasks, and generating digests.
+
 ---
 
 ## Repository structure (high level)
@@ -45,6 +51,9 @@ A GitHub Actions workflow runs **every day at 04:00 JST** and:
 - `docs/` — handbook, dashboard, privacy rules, reviews, generated TIL summaries
 - `journal/` — daily notes (private)
 - `projects/` — roadmaps and archived projects (career/health/finance/music)
+- `.claude/` — Claude Code configuration and skills (hooks, agent-memory, etc.)
+- `CLAUDE.md` — Project context and guide for Claude Code
+- `settings.json` — Project settings for skills
 - `logs/` — learning/work/health logs (private)
 - `scripts/` — sync + index + digest generators
 - `vendor/til/` — imported TIL repo content (do not edit manually)
@@ -292,5 +301,9 @@ Use whatever license you prefer for your template. (Add one if you plan to publi
 
 ## Credits / Inspiration
 
-This template is inspired by the “manage your life with GitHub” approach and the broader TIL culture. If you publish a template derived from this, consider linking back to the inspiration sources you used.
+This template is inspired by the “manage your life with GitHub” approach and the broader TIL culture.
+
+- https://www.youtube.com/watch?v=KHiq6nf0Jio
+- https://www.youtube.com/watch?v=wNLE7rQDLN0
+- https://zenn.dev/hand_dot/articles/85c9640b7dcc66
 
