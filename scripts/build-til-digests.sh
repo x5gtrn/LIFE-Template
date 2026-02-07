@@ -15,10 +15,16 @@ mkdir -p docs docs/til-weekly
 TODAY_JST="$(TZ=Asia/Tokyo date -d 'yesterday' +%F)"
 NOW_JST="$(TZ=Asia/Tokyo date '+%F %H:%M JST')"
 
-ISO_WEEK="$(TZ=Asia/Tokyo date +%G-W%V)"
-WEEK_FILE="docs/til-weekly/${ISO_WEEK}.md"
+# Substantial today's date (based on 4 hours ago)
+# e.g., Monday 03:59 is treated as Sunday
+BASE_DAY_JST="$(TZ=Asia/Tokyo date -d '4 hours ago' +%F)"
+# Get Monday of that week
+DOW="$(TZ=Asia/Tokyo date -d "$BASE_DAY_JST" +%u)"
+WEEK_START_DATE="$(TZ=Asia/Tokyo date -d "$BASE_DAY_JST - $((DOW - 1)) days" +%F)"
+WEEK_END_DATE="$(TZ=Asia/Tokyo date -d "$WEEK_START_DATE + 6 days" +%F)"
 
-WEEK_START_JST="$(TZ=Asia/Tokyo date -d 'monday 00:00' '+%F %H:%M:%S %Z')"
+WEEK_START_JST="${WEEK_START_DATE} 04:00:00 JST"
+WEEK_FILE="docs/til-weekly/${WEEK_START_DATE}-to-${WEEK_END_DATE}.md"
 
 CHANGES="$(git diff --name-status "${BASE_SHA}" -- "${ROOT}" || true)"
 
@@ -116,7 +122,7 @@ awk '/^@@@/ {next} $1=="M" {print $2}' <<< "${LOG_RAW}" | sort -u > "${MODIFIED}
 awk '/^@@@/ {next} $1=="D" {print $2}' <<< "${LOG_RAW}" | sort -u > "${DELETED}" || true
 
 {
-  echo "# TIL Weekly Digest: ${ISO_WEEK}"
+  echo "# TIL Weekly Digest: ${WEEK_START_DATE} to ${WEEK_END_DATE}"
   echo ""
   echo "_Week start (JST): ${WEEK_START_JST}_"
   echo "_Generated: ${NOW_JST}_"
