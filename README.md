@@ -3,7 +3,7 @@
 This repository is a **template** for building a “Life OS” on GitHub:
 
 - **LIFE repo (this repo)** is meant to be **private** and contains your high-context personal operating system:
-  - tasks, goals, plans, journals, logs, reviews
+  - tasks, goals, projects, journals, logs, reviews
 - **TIL repo** is meant to be **public** (or at least separate) and contains your low-context, reusable learnings:
   - small notes like “Today I learned …” in Markdown
 
@@ -16,7 +16,7 @@ The key idea is to keep **private life management** and **public learning output
 ### 1) Manage your life with GitHub Issues + Projects
 - Capture tasks and ideas quickly (Inbox style)
 - Review weekly/monthly using checklists and dashboards
-- Keep plans in Markdown for career/health/finance/music
+- Keep projects in Markdown for career/health/finance/music
 
 ### 2) Keep a public TIL habit without leaking private context
 - Write TIL in a separate repo (public)
@@ -40,7 +40,7 @@ A GitHub Actions workflow runs **every day at 04:00 JST** and:
 - `.github/workflows/sync-til-daily.yml` — daily TIL sync + docs generation
 - `docs/` — handbook, dashboard, privacy rules, reviews, generated TIL summaries
 - `journal/` — daily notes (private)
-- `plans/` — roadmaps (career/health/finance/music)
+- `projects/` — roadmaps (career/health/finance/music)
 - `logs/` — learning/work/health logs (private)
 - `scripts/` — sync + index + digest generators
 - `vendor/til/` — imported TIL repo content (do not edit manually)

@@ -7,7 +7,7 @@
 ## Core tools
 - GitHub Issues: capture tasks, ideas, decisions
 - GitHub Projects (v2): manage workflow (board/table/roadmap)
-- Markdown files: journal, plans, logs
+- Markdown files: journal, projects, logs
 - Subtree: import TIL for review/search
 - GitHub Actions: daily sync + index/digests auto-commit
 
@@ -36,7 +36,7 @@ Store as Markdown using template:
 `logs/decisions/YYYY-MM-DD-<topic>.md`
 
 ### Plans
-- `plans/career/roadmap.md`
-- `plans/health/routines.md`
-- `plans/finance/budget.md`
-- `plans/music/next-release.md`
+- `projects/career/roadmap.md`
+- `projects/health/routines.md`
+- `projects/finance/budget.md`
+- `projects/music/next-release.md`

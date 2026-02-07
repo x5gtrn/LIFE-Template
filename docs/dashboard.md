@@ -14,10 +14,10 @@ Use this as your single entry point during reviews.
 ## 3) Monthly
 - `docs/monthly-review.md`
 - Update plans:
-  - `plans/career/roadmap.md`
-  - `plans/health/routines.md`
-  - `plans/finance/budget.md`
-  - `plans/music/next-release.md`
+  - `projects/career/roadmap.md`
+  - `projects/health/routines.md`
+  - `projects/finance/budget.md`
+  - `projects/music/next-release.md`
 
 ## 4) Key docs
 - Handbook: `docs/handbook.md`
